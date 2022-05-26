@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<article class="container">
+    <div class="item">{{ post_detail.title }}</div>
+    <div class="item">익명</div>
+    <div class="item">{{ post_detail.date }}</div>
+</article><br/>
+{{ post_detail.body }}<br/>
+{% if post_detail.photo %}
+    <img src = "{{ post_detail.photo.url }}" alt="" height="500">
+{% endif %}
+
+<hr>
+<button class="butt"><a href="{% url 'home' %}"> 메인 페이지로 </a></button>
+<br/>
+
+<h3>Comment</h3><br/>
+
+{% for comment in post_detail.comment_set.all %}
+<article class="container">
+    <div class="item2">{{ comment.comment }}</div>
+    <div class="item2">익명</div>
+    <div class="item2">{{ comment.date }}</div>
+</article>
+<hr>
+{% endfor %}
+
+<form method="POST" action="{% url 'input_comment' post_detail.id %}">
+    {% csrf_token %}
+    {{ comment_form.comment }}
+    <input type="submit" value="입력">
+</form>
+
+
+{% endblock %}

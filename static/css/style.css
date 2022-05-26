@@ -1,0 +1,26 @@
+header {
+    background-color:lightsteelblue;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.item {
+    font-size: large;
+    font-weight: bold;
+    padding: 20px;
+}
+
+.tablefactor {
+    text-align: center;
+}
+
+.butt{
+    padding: 10px;
+}
