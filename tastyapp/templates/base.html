@@ -13,6 +13,17 @@
     <header>
         <h1>Tasty Sinchon</h1>
         <h3>신촌 맛집 커뮤니티입니다 :-) </h3>
+
+        {% if user.is_authenticated %}
+        <div>안녕하세요, {{ user.username }}님 </div>
+        <a href="{% url 'logout'%}"><button type="button" class="btn btn-secondary btn-sm">Logout</button></a>
+        
+        {% else %}
+        <div> 
+        <a href="{% url 'signup' %}"><button type="button" class="btn btn-dark">Sign Up</button></a>
+        <a href="{% url 'login' %}"><button type="button" class="btn btn-primary btn-sm">Login</button></a>
+        </div>
+        {% endif %}
     </header>
 
     {% block content %}

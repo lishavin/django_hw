@@ -5,7 +5,8 @@ from django.utils import timezone
 
 def home(request):
     posts = Post.objects.filter().order_by('-date')
-    return render(request, 'index.html', {'posts':posts})
+    author = Post.author
+    return render(request, 'index.html', {'posts':posts, 'author':author})
 
 def newpost(request):
     return render(request, 'newpost.html')
@@ -16,6 +17,7 @@ def create(request):
         post.title = request.POST['title']
         post.body = request.POST['body']
         post.photo = request.FILES['photo']
+        post.author = request.POST['author']
         post.date = timezone.now()
         post.save()
     return redirect('home')

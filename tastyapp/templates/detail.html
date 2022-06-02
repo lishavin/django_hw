@@ -5,7 +5,7 @@
 
 <article class="container">
     <div class="item">{{ post_detail.title }}</div>
-    <div class="item">익명</div>
+    <div class="item">{{ post_detail.author }}</div>
     <div class="item">{{ post_detail.date }}</div>
 </article><br/>
 {{ post_detail.body }}<br/>
@@ -22,7 +22,7 @@
 {% for comment in post_detail.comment_set.all %}
 <article class="container">
     <div class="item2">{{ comment.comment }}</div>
-    <div class="item2">익명</div>
+    <div class="item2">{{ comment.author }}</div>
     <div class="item2">{{ comment.date }}</div>
 </article>
 <hr>

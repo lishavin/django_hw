@@ -17,13 +17,16 @@
         {% for post in posts %}
         <tr>
             <td width="60%"><a href="{% url 'detail' post.id %}"> {{ post.title }} </a></td>
-            <td width="10%"> 익명 </td>
+            <td width="10%"> {{ post.author.username }} </td>
             <td> {{ post.date }} </td>
         </tr>
         {% endfor %}
     </tbody>
 </table>
 <hr>
+
+{% if user.is_authenticated %}
 <button class="butt"><a href="{% url 'newpost' %}">New Post</a></button>
+{% endif %}
 
 {% endblock %}
